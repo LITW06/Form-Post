@@ -1,0 +1,38 @@
+﻿@using WebApplication6.Models
+@model IEnumerable<Person>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <a class="btn btn-primary" href="/people/showadd">Add Person</a>
+        <table class="table table-hover table-bordered table-striped">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+                <th>Delete</th>
+            </tr>
+            @foreach (Person person in Model)
+            {
+                <tr>
+                    <td>@person.FirstName</td>
+                    <td>@person.LastName</td>
+                    <td>@person.Age</td>
+                    <td>
+                        <form method="post" action="/people/delete">
+                            <input type="hidden" name="id" value="@person.Id"/>
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>
