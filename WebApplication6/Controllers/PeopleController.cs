@@ -35,6 +35,30 @@ namespace WebApplication6.Controllers
             mgr.Delete(id);
             return Redirect("/people/list");
         }
+
+        public ActionResult ShowEdit(int? id)
+        {
+            if (!id.HasValue)
+            {
+                return Redirect("/people/list");
+            }
+            PeopleManager mgr = new PeopleManager(Properties.Settings.Default.PplConStr);
+            Person person = mgr.GetPerson(id.Value);
+            if (person == null)
+            {
+                return Redirect("/people/list");
+            }
+
+            return View(person);
+        }
+
+        [HttpPost]
+        public ActionResult Update(Person person)
+        {
+            PeopleManager mgr = new PeopleManager(Properties.Settings.Default.PplConStr);
+            mgr.Update(person);
+            return Redirect("/people/list");
+        }
     }
 
     //Create a page that displays a list of People (or whatever interests you).

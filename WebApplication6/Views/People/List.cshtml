@@ -16,21 +16,26 @@
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Age</th>
+                <th>Edit</th>
                 <th>Delete</th>
             </tr>
             @foreach (Person person in Model)
             {
-                <tr>
-                    <td>@person.FirstName</td>
-                    <td>@person.LastName</td>
-                    <td>@person.Age</td>
-                    <td>
-                        <form method="post" action="/people/delete">
-                            <input type="hidden" name="id" value="@person.Id"/>
-                            <button class="btn btn-danger">Delete</button>
-                        </form>
-                    </td>
-                </tr>
+            <tr>
+                <td>@person.FirstName</td>
+                <td>@person.LastName</td>
+                <td>@person.Age</td>
+                <td>
+                    <a href="/people/showedit?id=@person.Id"
+                       class="btn btn-warning">Edit</a>
+                </td>
+                <td>
+                    <form method="post" action="/people/delete">
+                        <input type="hidden" name="id" value="@person.Id" />
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
             }
         </table>
     </div>

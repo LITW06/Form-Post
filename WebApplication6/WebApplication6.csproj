@@ -120,6 +120,7 @@
     <Content Include="Views\Northwind\SearchResults.cshtml" />
     <Content Include="Views\People\ShowAdd.cshtml" />
     <Content Include="Views\People\List.cshtml" />
+    <Content Include="Views\People\ShowEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
